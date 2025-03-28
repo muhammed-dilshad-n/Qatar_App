@@ -28,6 +28,7 @@ class _OffersScreenState extends State<OffersScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromARGB(255, 208, 178, 227),
       body: Column(
         children: [
           SizedBox(height: 10),
@@ -35,7 +36,7 @@ class _OffersScreenState extends State<OffersScreen>
             padding: const EdgeInsets.symmetric(horizontal: 12),
             child: TextFormField(
               decoration: InputDecoration(
-                fillColor: const Color.fromARGB(255, 218, 217, 215),
+                fillColor: const Color.fromARGB(255, 239, 235, 235),
                 filled: true,
 
                 hintText: 'Find all shopping flyers in one place',
@@ -73,39 +74,34 @@ class _OffersScreenState extends State<OffersScreen>
           ),
           SizedBox(height: 8),
           Container(
-            height: 70,
+            height: 50,
             width: double.infinity,
-            color: Colors.deepPurple,
-            child: ListView(
-              scrollDirection: Axis.vertical,
-              children: [
-                ButtonsTabBar(
-                  height: 45,
-                  backgroundColor: const Color.fromARGB(255, 88, 4, 101),
-                  unselectedBackgroundColor: const Color.fromARGB(
-                    255,
-                    219,
-                    216,
-                    216,
-                  ),
-                  unselectedLabelStyle: TextStyle(
-                    color: const Color.fromARGB(255, 0, 0, 0),
-                  ),
-                  labelStyle: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  contentCenter: true,
-                  width: 100,
-                  controller: _tabControllers,
-                  tabs: [
-                    Tab(text: "All Offers"),
-                    Tab(text: "Eid Offers"),
-                    Tab(text: "Ramadan"),
-                    Tab(text: "Supermarket"),
-                    Tab(text: "Electrocics"),
-                  ],
-                ),
+            color: const Color(0xFFdfbbf7),
+            child: ButtonsTabBar(
+              height: 80,
+              backgroundColor: const Color.fromARGB(255, 88, 4, 101),
+              unselectedBackgroundColor: const Color.fromARGB(
+                255,
+                239,
+                235,
+                235,
+              ),
+              unselectedLabelStyle: TextStyle(
+                color: const Color.fromARGB(255, 0, 0, 0),
+              ),
+              labelStyle: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+              contentCenter: true,
+              width: 100,
+              controller: _tabControllers,
+              tabs: [
+                Tab(text: "All Offers"),
+                Tab(text: "Eid Offers"),
+                Tab(text: "Ramadan"),
+                Tab(text: "Supermarket"),
+                Tab(text: "Electrocics"),
               ],
             ),
           ),
@@ -115,10 +111,10 @@ class _OffersScreenState extends State<OffersScreen>
               controller: _tabControllers,
               children: const [
                 AllOffersScreen(),
-                Center(child: Text("Content for Tab 2")),
-                Center(child: Text("Content for Tab 3")),
-                Center(child: Text("Content for Tab 2")),
-                Center(child: Text("Content for Tab 3")),
+                AllOffersScreen(),
+                AllOffersScreen(),
+                AllOffersScreen(),
+                AllOffersScreen(),
               ],
             ),
           ),

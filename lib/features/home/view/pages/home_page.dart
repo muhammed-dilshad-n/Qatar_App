@@ -1,7 +1,9 @@
 import 'package:buttons_tabbar/buttons_tabbar.dart';
 import 'package:flutter/material.dart';
+import 'package:qatar_application/features/coupons/view/pages/coupons_screen.dart';
 import 'package:qatar_application/features/home/view/widgets/drawer_widget.dart';
 import 'package:qatar_application/features/offers/view/pages/offers_screen.dart';
+import 'package:qatar_application/features/products/view/pages/product_screen.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -30,9 +32,11 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFdfbbf7),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20),
+        padding: const EdgeInsets.only(top: 20),
         child: SingleChildScrollView(
+          physics: NeverScrollableScrollPhysics(),
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
@@ -42,9 +46,9 @@ class _HomePageState extends State<HomePage>
                   children: [
                     SizedBox(
                       width: 70,
-                      height: 30,
+                      height: 40,
                       child: Image.asset(
-                        "assets/images/d4d4.png",
+                        "assets/images/logo.png",
                         fit: BoxFit.fill,
                       ),
                     ),
@@ -95,9 +99,9 @@ class _HomePageState extends State<HomePage>
                 backgroundColor: const Color.fromARGB(255, 88, 4, 101),
                 unselectedBackgroundColor: const Color.fromARGB(
                   255,
-                  219,
-                  216,
-                  216,
+                  239,
+                  235,
+                  235,
                 ),
                 unselectedLabelStyle: TextStyle(
                   color: const Color.fromARGB(255, 0, 0, 0),
@@ -108,7 +112,7 @@ class _HomePageState extends State<HomePage>
                 ),
                 contentCenter: true,
                 labelSpacing: 10,
-                width: 100,
+                width: 125,
                 controller: _tabController,
                 tabs: const [
                   Tab(text: "Offers"),
@@ -119,14 +123,15 @@ class _HomePageState extends State<HomePage>
               // Container for TabBarView to avoid using Expanded in SingleChildScrollView
               SizedBox(
                 height:
-                    MediaQuery.of(context).size.height *
-                    1, // Fixed height for TabBarView
+                    MediaQuery.of(
+                      context,
+                    ).size.height, // Fixed height for TabBarView
                 child: TabBarView(
                   controller: _tabController,
                   children: const [
                     OffersScreen(),
-                    Center(child: Text("Content for Tab 2")),
-                    Center(child: Text("Content for Tab 3")),
+                    ProductScreen(),
+                    CouponsScreen(),
                   ],
                 ),
               ),
@@ -135,6 +140,33 @@ class _HomePageState extends State<HomePage>
         ),
       ),
       endDrawer: DrawerWidget(),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(color: Colors.blue),
+              child: Text(
+                'Drawer Header',
+                style: TextStyle(color: Colors.white, fontSize: 24),
+              ),
+            ),
+            ListTile(
+              title: Text('Item 1'),
+              onTap: () {
+                // Handle item 1 tap
+              },
+            ),
+            ListTile(
+              title: Text('Item 2'),
+              onTap: () {
+                // Handle item 2 tap
+              },
+            ),
+            // Add more ListTiles for additional items
+          ],
+        ),
+      ),
     );
   }
 }

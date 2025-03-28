@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AllOffersScreen extends StatelessWidget {
-  const AllOffersScreen({super.key});
+class ProductScreen extends StatelessWidget {
+  const ProductScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,29 +18,57 @@ class AllOffersScreen extends StatelessWidget {
       "assets/images/paris.png",
     ];
     List<String> offers = [
-      "assets/images/1.jpeg",
-      "assets/images/2.jpeg",
-      "assets/images/3.jpeg",
-      "assets/images/4.jpeg",
-      "assets/images/5.jpeg",
-      "assets/images/1.jpeg",
-      "assets/images/2.jpeg",
-      "assets/images/3.jpeg",
-      "assets/images/4.jpeg",
-      "assets/images/5.jpeg",
-      "assets/images/1.jpeg",
-      "assets/images/2.jpeg",
-      "assets/images/3.jpeg",
-      "assets/images/4.jpeg",
-      "assets/images/5.jpeg",
+      "assets/images/phone1.png",
+      "assets/images/phone2.png",
+      "assets/images/phone3.png",
+      "assets/images/phone4.png",
+      "assets/images/phone1.png",
+      "assets/images/phone2.png",
+      "assets/images/phone3.png",
+      "assets/images/phone4.png",
+      "assets/images/phone1.png",
+      "assets/images/phone2.png",
+      "assets/images/phone3.png",
+      "assets/images/phone4.png",
     ];
+    TextEditingController searchController = TextEditingController();
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(5),
+        padding: const EdgeInsets.all(12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 10),
+            SizedBox(height: 15),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: TextFormField(
+                controller: searchController,
+                decoration: InputDecoration(
+                  fillColor: const Color.fromARGB(255, 239, 235, 235),
+                  filled: true,
+                  prefixIcon: Icon(Icons.search, size: 35),
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      searchController.clear();
+                    },
+                    icon: Icon(Icons.clear),
+                  ),
+                  hintText: 'Search products',
+                  prefixIconConstraints: BoxConstraints.loose(Size(100, 40)),
+                  hintStyle: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
+
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(50),
+                    borderSide: BorderSide.none,
+                  ),
+                  constraints: BoxConstraints(maxHeight: 50),
+                ),
+              ),
+            ),
+            SizedBox(height: 15),
             SizedBox(
               height: 50,
               child: ListView.separated(
@@ -59,21 +87,13 @@ class AllOffersScreen extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(height: 10),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25),
-              ),
-
-              child: Image.asset("assets/images/add.png", fit: BoxFit.fill),
-            ),
             Padding(
               padding: const EdgeInsets.only(top: 10),
               child: SizedBox(
                 width: 350,
                 height: 30,
                 child: Text(
-                  "Qatar - Doha offers in Q4M Online",
+                  "Mobiles offers in Qatar - Doha",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
                 ),
               ),
@@ -83,7 +103,7 @@ class AllOffersScreen extends StatelessWidget {
                 width: 500,
                 height: 100,
                 child: GridView.builder(
-                  // physics: RangeMaintainingScrollPhysics(),
+                  physics: ClampingScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     childAspectRatio: 0.6,
                     crossAxisCount: 2,
@@ -108,31 +128,27 @@ class AllOffersScreen extends StatelessWidget {
                               fontWeight: FontWeight.w800,
                             ),
                           ),
-                          Text(
-                            "Eid Mubarak",
-                            style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.blueGrey,
-                              fontWeight: FontWeight.w700,
-                            ),
+                          Row(
+                            children: [
+                              Spacer(),
+                              Text(
+                                textAlign: TextAlign.end,
+                                "QAR 299.00",
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  color: const Color.fromARGB(255, 247, 3, 3),
+                                  fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                            ],
                           ),
                           Row(
                             children: [
                               Text(
-                                "+23 pages",
+                                "Doha Daymart",
                                 style: TextStyle(
-                                  color: const Color.fromARGB(
-                                    255,
-                                    182,
-                                    178,
-                                    178,
-                                  ),
-                                ),
-                              ),
-                              Spacer(),
-                              Text(
-                                "+8 Days left",
-                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w600,
                                   color: const Color.fromARGB(
                                     255,
                                     182,
@@ -150,6 +166,7 @@ class AllOffersScreen extends StatelessWidget {
                 ),
               ),
             ),
+
             SizedBox(height: 120),
           ],
         ),
@@ -157,5 +174,3 @@ class AllOffersScreen extends StatelessWidget {
     );
   }
 }
-
-// Image.asset(offers[index], fit: BoxFit.fill)
